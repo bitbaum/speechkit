@@ -16,10 +16,10 @@ Extracted from [Heidi](https://github.com/bitbaum/heidi), where it runs the spea
 ## Install
 
 ```bash
-pnpm add github:bitbaum/speechkit#v1.0.0
+pnpm add @bitbaum/speechkit
 ```
 
-`dist/` is committed, so a `github:` install needs no build step. npm (`@bitbaum/speechkit`) once the first publish is bootstrapped.
+On npm since 2026-09-25. `dist/` is also committed, so `github:bitbaum/speechkit#v1.0.0` works without a build step if you need a git pin.
 
 ## The rule everything else follows
 
@@ -85,20 +85,17 @@ Comments cite sections of Heidi's design principles, which is where the reasonin
 - **§7** — the state of Swiss German speech technology, measured rather than taken from vendors;
 - **§8** — no false precision: no norms, no grades, no scores. Every number is reported as itself and compared only with the same learner's earlier takes.
 
-## npm
+## Releasing
 
-Releases are tag-driven and tokenless (npm Trusted Publishing), the same as `ai-kit`. The first publish of a new package cannot be tokenless — npm will not trust a publisher for a package that does not exist yet — so it is done once by hand, by whoever holds the account's passkey:
+`1.0.0` was published by hand on 2026-09-25 — npm will not let a Trusted Publisher be configured for a package that does not exist yet. Releases are meant to be tag-driven and tokenless (npm Trusted Publishing), the same as `ai-kit`, once one more step is done by whoever holds the account's passkey:
 
 ```bash
-npm login --auth-type=web            # approve in the browser with the passkey
-npm publish --access public --provenance=false
-# npmjs.com → @bitbaum/speechkit → Settings → Trusted Publisher:
-#   GitHub Actions, bitbaum/speechkit, workflow publish.yml
-npm logout
+npm login --auth-type=web     # a real 2FA session; approve with the passkey
+npm trust github @bitbaum/speechkit --file publish.yml --repo bitbaum/speechkit --yes
 gh variable set NPM_PUBLISHING -b on --repo bitbaum/speechkit
 ```
 
-From then on, `git tag vX.Y.Z && git push origin vX.Y.Z` publishes. Until then a tag's Publish run is green and says so.
+After that, `git tag vX.Y.Z && git push origin vX.Y.Z` on a merged version bump publishes with provenance. Until then a tag's Publish run is green, publishes nothing, and says why.
 
 ## Develop
 
