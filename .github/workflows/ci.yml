@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  # Re-arm strand: a GITHUB_TOKEN merge starts no workflow on its own, so the
+  # auto-merge sweep must be able to start CI on main explicitly.
+  workflow_dispatch: {}
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # pnpm version comes from "packageManager" in package.json (SSOT).
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # Identical to what runs locally: format, lint, types, build, unit tests
+      # on the source, tests on the built package.
+      - run: pnpm run verify
+      # dist/ is committed so a `github:` install needs no build step. It must
+      # be exactly what the source builds to.
+      - name: Committed dist/ matches the source
+        run: git diff --exit-code --stat -- dist

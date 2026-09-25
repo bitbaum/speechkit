@@ -1,0 +1,6 @@
+node_modules
+# dist/ is COMMITTED on purpose: a `github:` install then needs no build step
+# (pnpm refuses git-dependency builds without a per-SHA allowBuilds entry in
+# every consumer). CI fails if it differs from what the source builds to.
+.claude/worktrees
+*.log

@@ -1,0 +1,29 @@
+{
+  // Type-checks everything, tests included. `tsconfig.build.json` is the one
+  // that emits, and leaves the tests out of dist/.
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "types": ["node"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    // Sources import each other as `./x.ts` so `node --test` can run them
+    // directly with type stripping; the emitted JS says `./x.js`.
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+    // Only syntax Node can strip — no enums, namespaces or parameter
+    // properties — because the tests run the source, not the build.
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src/**/*"]
+}

@@ -1,0 +1,10 @@
+# Build output — formatting it is noise, and CI checks it matches the source.
+node_modules
+dist
+coverage
+
+# Lockfiles are generated; prettier would rewrite them wholesale.
+pnpm-lock.yaml
+
+# Prose is out of scope: prettier rewraps it, which buries the real diff.
+*.md
