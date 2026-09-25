@@ -1,0 +1,1 @@
+{"version":3,"file":"pause.d.ts","sourceRoot":"","sources":["../src/pause.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;;;;GAkBG;AAEH;;;;;;;;GAQG;AACH,eAAO,MAAM,YAAY,MAAM,CAAC;AAEhC;;;;;;;;;;;;;;;;;;;GAmBG;AACH,eAAO,MAAM,eAAe,QAAmB,CAAC;AAChD,eAAO,MAAM,cAAc,OAAQ,CAAC;AAEpC,kEAAkE;AAClE,MAAM,MAAM,SAAS,GAAG;IAAE,OAAO,EAAE,MAAM,CAAC;IAAC,KAAK,EAAE,MAAM,CAAA;CAAE,CAAC"}

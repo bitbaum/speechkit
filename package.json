@@ -1,0 +1,64 @@
+{
+  "name": "@bitbaum/speechkit",
+  "version": "1.0.0",
+  "description": "Measure how somebody spoke — pauses, rate, where they searched for a word, grammar a listener would notice — and say only what the evidence allows. Language-agnostic; no pronunciation score, on purpose.",
+  "license": "MIT",
+  "author": "Cato",
+  "homepage": "https://github.com/bitbaum/speechkit#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitbaum/speechkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bitbaum/speechkit/issues"
+  },
+  "keywords": [
+    "speech",
+    "fluency",
+    "language-learning",
+    "pronunciation",
+    "grammar",
+    "languagetool",
+    "whisper",
+    "speaking-practice"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test \"src/**/*.test.ts\"",
+    "test:dist": "node --test test/*.test.mjs",
+    "check:dist": "git diff --exit-code --stat -- dist",
+    "verify": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run build && pnpm test && pnpm run test:dist",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.4.0",
+    "eslint": "^10.9.1",
+    "globals": "^17.11.0",
+    "prettier": "^3.9.6",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.68.0"
+  }
+}
