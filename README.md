@@ -11,7 +11,7 @@ A learner records themselves speaking a language they are learning. speechkit te
 
 It will **not** give a pronunciation score. That is not a gap waiting to be filled: a score against a native ideal is a judgement about a person, and no improvement in speech recognition makes it honest. A test in this repo fails if an export ever starts to look like one.
 
-Extracted from [Heidi](https://heidi.orangecat.ch), where it runs the speaking practice for Zurich German learners.
+Extracted from [Heidi](https://github.com/bitbaum/heidi), where it runs the speaking practice for Zurich German learners.
 
 ## Install
 
