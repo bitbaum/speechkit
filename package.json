@@ -1,6 +1,6 @@
 {
   "name": "@bitbaum/speechkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Measure how somebody spoke — pauses, rate, where they searched for a word, grammar a listener would notice — and say only what the evidence allows. Language-agnostic; no pronunciation score, on purpose.",
   "license": "MIT",
   "author": "Cato",
